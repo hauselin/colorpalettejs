@@ -51,7 +51,7 @@
 
     button {
       margin-left: 30px;
-      margin-right: 20px;
+      margin-right: 0px;
     }
 
     #preview {
@@ -121,9 +121,15 @@
   </select>
 
   <!-- copy hex values button -->
-  <button onclick="copy_hex_values(vals_hex)">Copy hex values</button>
+  <button onclick="copy_hex_values(vals_hex, false)">Copy hex</button>
+  <button onclick="copy_hex_values(vals_hex, true)">Copy hex in quotes</button>
   <script>
-              function copy_hex_values(x) {
+              function copy_hex_values(x, quote) {
+                if (quote) {
+                  var x = x.map(i => i.toString());
+                  x = '"' +x.join('","') + '"';
+                }
+                console.log(x)
                   var inp = document.createElement('input');
                   document.body.appendChild(inp);
                   inp.value = x;
@@ -218,7 +224,8 @@
                   };
                   data.push(obj);
               });
-          vals_hex = data.map(i => i.background); // create button to copy values clipboard
+          
+          vals_hex = data.map(i => i.background); 
           vals_rgb = data.map(i => i.rgb);
   
           d3.select("#levels")
