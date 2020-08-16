@@ -184,7 +184,9 @@
 .icon-social-instagram,
 .icon-social-linkedin,
 .icon-social-pinterest,
-.icon-social-github,
+.icon-social-github {
+  color: black;
+}
 .icon-social-google,
 .icon-social-reddit,
 .icon-social-skype,

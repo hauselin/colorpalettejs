@@ -12,6 +12,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="icon" href="/favicon.png">
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -59,7 +60,7 @@
 
         #preview {
             width: 90%;
-            height: 40px;
+            height: 50px;
             margin-top: 10px;
             margin-left: 30px;
         }
@@ -97,17 +98,24 @@
     <!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
         <div class="container">
-            <a class="navbar-brand" href="#"><strong>Perceptually uniform colormaps</strong></a>
+            <a class="navbar-brand">
+                <img src="/favicon.png" alt="viridis" width="19">&nbsp
+                <strong>Perceptually uniform colormaps</strong>
+            </a>
             <a href="https://github.com/hauselin/colorpalettejs">
-                <i class="fab fa-github fa-2x fa-fw"></i>
+                <i class="fab fa-github fa-2x fa-fw" style="color:black"></i>
             </a>
         </div>
     </nav>
 
     <!-- <h1>Color Palette Generator</h1> -->
-    <br><br>
+    <br>
     <p>
-        Perceptually uniform colormaps are great for many reasons and look pretty. They were introduced in 2015 (see <a href="https://www.youtube.com/watch?v=xAoljeRJ3lU">talk at SciPy2015</a>) and are available in Python's <a href="http://bids.github.io/colormap/">matplotlib</a>, <a href="https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html">R</a>, <a href="https://github.com/d3/d3-scale-chromatic">D3js</a>, and others. This app is uses D3js and is a shameless adaptation of <a href="https://gist.github.com/adam-garcia/8d8eded299ec5e16752d04281236b151">Adam Garcia's gist</a>. To begin, select the number of categories and the color palette you'd like to use.
+        Perceptually uniform colormaps are great in many ways. They were introduced in 2015 (see <a href="https://www.youtube.com/watch?v=xAoljeRJ3lU">talk at SciPy2015</a>) and are available in <a href="http://bids.github.io/colormap/">Python's matplotlib</a>, <a href="https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html">R's viridis package</a>, <a href="https://github.com/d3/d3-scale-chromatic">JavaScript's D3</a>, and others. This site uses D3js to generate colors and is a shameless adaptation of <a href="https://gist.github.com/adam-garcia/8d8eded299ec5e16752d04281236b151">Adam Garcia's gist</a>.
+    </p>
+
+    <p>
+        Select the color palette and number of categories you'd like to use. Click <strong>Copy</strong> to copy the hex values (e.g., #440154) or <strong>Copy with quotes</strong> to copy the hex values with quotes (e.g., "#440154").
     </p>
 
 
@@ -124,8 +132,8 @@
     <input type="number" id="groups" value="5" min="2" max="256">
 
     <!-- copy hex values button -->
-    <button onclick="copy_hex_values(vals_hex, false)">Copy hex</button>
-    <button onclick="copy_hex_values(vals_hex, true)">Copy hex in quotes</button>
+    <button onclick="copy_hex_values(vals_hex, false)">Copy</button>
+    <button onclick="copy_hex_values(vals_hex, true)">Copy with quotes</button>
     <script>
               function copy_hex_values(x, quote) {
                 if (quote) {
