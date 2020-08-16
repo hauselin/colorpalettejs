@@ -3,127 +3,130 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Color Palette Generator Built With D3js">
-  <meta name="author" content="Hause Lin">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Color Palette Generator Built With D3js">
+    <meta name="author" content="Hause Lin">
 
-  <title>Color Palette Generator</title>
+    <title>Color Palette Generator</title>
 
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
-  <!-- Custom fonts for this template -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-  <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
-  <!-- Custom styles for this template -->
-  <link href="css/landing-page.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/landing-page.css" rel="stylesheet">
 
-  <!-- d3 for color palette  -->
-  <script src="https://d3js.org/d3.v5.min.js"></script>
+    <!-- d3 for color palette  -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
 
-  <!-- css style for page -->
-  <style>
-    body {
-      max-width: 800px;
-      margin: 0 auto;
-    }
+    <!-- css style for page -->
+    <style>
+        body {
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-    p {
-      line-height: 1.3rem;
-      margin-left: 30px;
-      margin-right: 30px;
-    }
+        p {
+            line-height: 1.3rem;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
 
-    label {
-      width: 50px;
-      margin-left: 30px;
-      margin-right: 20px;
-    }
+        label {
+            width: 50px;
+            margin-left: 30px;
+            margin-right: 20px;
+        }
 
-    input {
-      width: 50px;
-      margin-left: 10px;
-      margin-right: 20px;
-    }
+        input {
+            width: 50px;
+            margin-left: 10px;
+            margin-right: 20px;
+        }
 
-    button {
-      margin-left: 30px;
-      margin-right: 0px;
-    }
+        button {
+            margin-left: 30px;
+            margin-right: 0px;
+            background-color: #ffffff;
+            border: 1px solid #b8b8b8;
+            border-radius: 5%;
+        }
 
-    #preview {
-      width: 90%;
-      height: 40px;
-      margin-top: 10px;
-      margin-left: 30px;
-    }
+        #preview {
+            width: 90%;
+            height: 40px;
+            margin-top: 10px;
+            margin-left: 30px;
+        }
 
-    #levels {
-      margin-top: 10px;
-      margin-left: 30px;
-      margin-right: 30px;
-    }
+        #levels {
+            margin-top: 10px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
 
-    div.level {
-      width: 100%;
-      height: 50px;
-      display: block;
-      margin-bottom: 0.2rem;
-      margin-right: 30px;
-    }
+        div.level {
+            width: 100%;
+            height: 50px;
+            display: block;
+            margin-bottom: 0.2rem;
+            margin-right: 30px;
+        }
 
-    div.level div {
-      display: inline-block;
-      margin-left: 0px;
-    }
+        div.level div {
+            display: inline-block;
+            margin-left: 0px;
+        }
 
-    /* size of color square */
-    div.block {
-      height: 100%;
-      width: 50px;
-      margin-right: 10px;
-    }
-  </style>
+        /* size of color square */
+        div.block {
+            height: 100%;
+            width: 50px;
+            margin-right: 10px;
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-light bg-light static-top">
-    <div class="container">
-      <a class="navbar-brand" href="#"><strong>Color palette generator for perceptually uniform colors</strong></a>
-      <a href="https://github.com/hauselin/colorpalettejs">
-        <i class="fab fa-github fa-2x fa-fw"></i>
-      </a>
-    </div>
-  </nav>
+    <!-- Navigation -->
+    <nav class="navbar navbar-light bg-light static-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><strong>Perceptually uniform colormaps</strong></a>
+            <a href="https://github.com/hauselin/colorpalettejs">
+                <i class="fab fa-github fa-2x fa-fw"></i>
+            </a>
+        </div>
+    </nav>
 
-  <!-- <h1>Color Palette Generator</h1> -->
-  <br><br>
-  <p>
-    Perceptually uniform colormaps are great for many reasons and look pretty. They were introduced in 2015 (see <a href="https://www.youtube.com/watch?v=xAoljeRJ3lU">talk at SciPy2015</a>) and are available in Python's <a href="http://bids.github.io/colormap/">matplotlib</a>, <a href="https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html">R</a>, <a href="https://github.com/d3/d3-scale-chromatic">D3js</a>, and others. This app is uses D3js and is a shameless adaptation of <a href="https://gist.github.com/adam-garcia/8d8eded299ec5e16752d04281236b151">Adam Garcia's gist</a>. To begin, select the number of categories and the color palette you'd like to use.
-  </p>
+    <!-- <h1>Color Palette Generator</h1> -->
+    <br><br>
+    <p>
+        Perceptually uniform colormaps are great for many reasons and look pretty. They were introduced in 2015 (see <a href="https://www.youtube.com/watch?v=xAoljeRJ3lU">talk at SciPy2015</a>) and are available in Python's <a href="http://bids.github.io/colormap/">matplotlib</a>, <a href="https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html">R</a>, <a href="https://github.com/d3/d3-scale-chromatic">D3js</a>, and others. This app is uses D3js and is a shameless adaptation of <a href="https://gist.github.com/adam-garcia/8d8eded299ec5e16752d04281236b151">Adam Garcia's gist</a>. To begin, select the number of categories and the color palette you'd like to use.
+    </p>
 
 
-  <label for="groups">Categories: </label>
-  <input type="number" id="groups" value="5" min="2" max="256">
-  <label for="palette">Palette: </label>
-  <select name="palette" id="palette">
-    <option value="v">viridis</option>
-    <option value="i">inferno</option>
-    <option value="m">magma</option>
-    <option value="p">plasma</option>
-    <option value="c">cividis</option>
-    <!-- <option value="t">turbo</option> -->
-  </select>
+    <label for="palette">Palette: </label>
+    <select name="palette" id="palette">
+        <option value="v">viridis</option>
+        <option value="i">inferno</option>
+        <option value="m">magma</option>
+        <option value="p">plasma</option>
+        <option value="c">cividis</option>
+        <!-- <option value="t">turbo</option> -->
+    </select>
+    <label for="groups">Categories: </label>
+    <input type="number" id="groups" value="5" min="2" max="256">
 
-  <!-- copy hex values button -->
-  <button onclick="copy_hex_values(vals_hex, false)">Copy hex</button>
-  <button onclick="copy_hex_values(vals_hex, true)">Copy hex in quotes</button>
-  <script>
+    <!-- copy hex values button -->
+    <button onclick="copy_hex_values(vals_hex, false)">Copy hex</button>
+    <button onclick="copy_hex_values(vals_hex, true)">Copy hex in quotes</button>
+    <script>
               function copy_hex_values(x, quote) {
                 if (quote) {
                   var x = x.map(i => i.toString());
@@ -139,11 +142,10 @@
               }
   </script>
 
-  <div id="preview"></div>
-  <div id="levels"></div>
+    <div id="preview"></div>
+    <div id="levels"></div>
 
-
-  <script>
+    <script>
       d3.select('input').on('change', function() {
           generatePalette();
       });
@@ -197,18 +199,17 @@
   
           // Update the preview
           var gradient = "linear-gradient(to right, " +
-                         paletteProxy(1.0) + ", " +
+                         paletteProxy(0.0) + ", " +
                          paletteProxy(0.5) + ", " +
-                         paletteProxy(0.0) + "" +
+                         paletteProxy(1.0) + "" +
                          ")";
-          d3.select("#preview").style("background", gradient);
           d3.select("#preview").style("background", gradient);
   
           // Update the value-levels
           var data = [];
           d3.range(0, 1 + 1/(n - 1), 1/(n - 1))
               .slice(0, n)
-              .reverse()
+            //   .reverse()
               .map(function(l) {
                   var r, g, b, hex;
                   hex = paletteProxy(l);
@@ -242,10 +243,10 @@
                       .html(function(d){
                           var rgb = "rgb(" + d.rgb.join(", ") + ")";
                           var hex = d.background;
-                          return rgb + "<br>" + hex}
+                          return hex + "<br>" + rgb}
                       )
                       .style("position", "absolute")
-                      .style("padding-top", "0.5rem")
+                      .style("padding-top", "0.3rem")
                       .style("font-size", "90%")
                       .style("padding-left", "1rem");
 
@@ -253,15 +254,15 @@
       }
     </script>
 
-  <!-- run script -->
-  <script type="text/javascript">
+    <!-- run script -->
+    <script type="text/javascript">
     generatePalette();
   </script>
 
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
