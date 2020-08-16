@@ -46,12 +46,12 @@
 
         input {
             width: 50px;
-            margin-left: 10px;
-            margin-right: 20px;
+            margin-left: 5px;
+            margin-right: 5px;
         }
 
         button {
-            margin-left: 30px;
+            margin-left: 2px;
             margin-right: 0px;
             background-color: #ffffff;
             border: 1px solid #b8b8b8;
@@ -63,6 +63,7 @@
             height: 50px;
             margin-top: 10px;
             margin-left: 30px;
+            border-radius: 8px;
         }
 
         #levels {
@@ -89,6 +90,7 @@
             height: 100%;
             width: 50px;
             margin-right: 10px;
+            border-radius: 8px;
         }
     </style>
 </head>
@@ -99,7 +101,7 @@
     <nav class="navbar static-top">
         <div class="container">
             <a class="navbar-brand">
-                <img src="https://hauselin.github.io/colorpalettejs/favicon.png" alt="viridis" width="25">&nbsp
+                <img src="https://hauselin.github.io/colorpalettejs/favicon.png" alt="viridis" width="25" style="border-radius: 8px;">&nbsp
                 <strong>Perceptually uniform colormaps</strong>
             </a>
             <a href="https://github.com/hauselin/colorpalettejs">
@@ -118,6 +120,38 @@
         Select the color palette and number of categories you'd like to use. Click <strong>Copy</strong> to copy the hex values (e.g., #440154) or <strong>Copy with quotes</strong> to copy the hex values with quotes (e.g., "#440154").
     </p>
 
+    <style>
+        .bmc-button img {
+            height: 34px !important;
+            width: 35px !important;
+            margin-bottom: 0px !important;
+            box-shadow: none !important;
+            border: none !important;
+            vertical-align: middle !important;
+            margin-left: 0px;
+        }
+
+        .bmc-button {
+            padding: 7px 5px 10px 1px !important;
+            line-height: 30px !important;
+            height: 50px !important;
+            text-decoration: none !important;
+            /* display: inline-flex !important; */
+            color: #ffffff !important;
+            background-color: #21918c !important;
+            border-radius: 8px !important;
+            border: 1px solid transparent !important;
+            font-size: 18px !important;
+            letter-spacing: 0.6px !important;
+            box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+            -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+            /* margin: 0 auto !important; */
+            font-family: 'Cookie', cursive !important;
+            -webkit-box-sizing: border-box !important;
+            box-sizing: border-box !important;
+            margin-left: 54px;
+        }
+    </style>
 
     <label for="palette">Palette: </label>
     <select name="palette" id="palette">
@@ -134,6 +168,7 @@
     <!-- copy hex values button -->
     <button onclick="copy_hex_values(vals_hex, false)">Copy</button>
     <button onclick="copy_hex_values(vals_hex, true)">Copy with quotes</button>
+
     <script>
               function copy_hex_values(x, quote) {
                 if (quote) {
@@ -148,7 +183,8 @@
                   document.execCommand('copy', false);
                   inp.remove();
               }
-  </script>
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/hauselin"><img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:0px;font-size:20px !important;">Buy me a coffee</span></a>
 
     <div id="preview"></div>
     <div id="levels"></div>
